@@ -33,9 +33,58 @@
   <h1>Welcome to my 'V Tools' Main page</h1>
   <p>Click the button that under this text!</p>
 
+  <div style="margin-bottom: 30px;">
+    <label for="lang-select" style="font-size: 16px; margin-right: 8px;">🌐 Language:</label>
+    <select id="lang-select" style="font-size: 16px; padding: 4px 12px; border-radius: 8px;">
+      <option value="en">English</option>
+      <option value="ko">한국어</option>
+    </select>
+  </div>
+
   <a href="https://drew2git0hub.github.io/Memo/" class="nav-button">Memo</a>
   <a href="https://drew2git0hub.github.io/Camera/" class="nav-button">Camera</a>
   <a href="https://drew2git0hub.github.io/Calendar/" class="nav-button">Calendar</a>
   <a href="https://github.com/drew2git0hub" class="nav-button">Github profile</a>
+</body>
+<script>
+  const translations = {
+    en: {
+      title: "Welcome to my 'V Tools' Main page",
+      desc: "Click the button that under this text!",
+      memo: "Memo",
+      camera: "Camera",
+      calendar: "Calendar",
+      github: "Github profile"
+    },
+    ko: {
+      title: "'V Tools'에 오신 것을 환영합니다!",
+      desc: "아래 버튼을 클릭하세요!",
+      memo: "메모",
+      camera: "카메라",
+      calendar: "캘린더",
+      github: "깃허브 프로필"
+    }
+  };
+
+  function setLanguage(lang) {
+    document.querySelector('h1').textContent = translations[lang].title;
+    document.querySelector('p').textContent = translations[lang].desc;
+    const btns = document.querySelectorAll('.nav-button');
+    btns[0].textContent = translations[lang].memo;
+    btns[1].textContent = translations[lang].camera;
+    btns[2].textContent = translations[lang].calendar;
+    btns[3].textContent = translations[lang].github;
+  }
+
+  document.getElementById('lang-select').addEventListener('change', function(e) {
+    setLanguage(e.target.value);
+    localStorage.setItem('vtools-lang', e.target.value);
+  });
+
+  // 초기 언어 설정 (localStorage 우선)
+  const savedLang = localStorage.getItem('vtools-lang') || 'en';
+  document.getElementById('lang-select').value = savedLang;
+  setLanguage(savedLang);
+</script>
 </body>
 </html>
