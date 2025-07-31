@@ -2,32 +2,11 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="theme-color" content="#007aff
+">
   <title>V Tools</title>
   <base target="_blank">
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f0f0;
-      text-align: center;
-      padding-top: 50px;
-    }
-
-    .nav-button {
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 300px;
-      font-size: 16px;
-      background-color: #4CAF50;
-      color: white;
-      text-decoration: none;
-      border-radius: 18px;
-      transition: background-color 0.3s ease;
-    }
-
-    .nav-button:hover {
-      background-color: #457fa0;
-    }
-  </style>
+  <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
   <h1>Welcome to my 'V Tools' Main page</h1>
@@ -45,46 +24,7 @@
   <a href="https://drew2git0hub.github.io/Camera/" class="nav-button">Camera</a>
   <a href="https://drew2git0hub.github.io/Calendar/" class="nav-button">Calendar</a>
   <a href="https://github.com/drew2git0hub" class="nav-button">Github profile</a>
-</body>
-<script>
-  const translations = {
-    en: {
-      title: "Welcome to 'V Tools'!",
-      desc: "Click the button below!",
-      memo: "Memo",
-      camera: "Camera",
-      calendar: "Calendar",
-      github: "Github profile"
-    },
-    ko: {
-      title: "'V Tools'에 오신 것을 환영합니다!",
-      desc: "아래 버튼을 클릭하세요!",
-      memo: "메모",
-      camera: "카메라",
-      calendar: "캘린더",
-      github: "깃허브 프로필"
-    }
-  };
 
-  function setLanguage(lang) {
-    document.querySelector('h1').textContent = translations[lang].title;
-    document.querySelector('p').textContent = translations[lang].desc;
-    const btns = document.querySelectorAll('.nav-button');
-    btns[0].textContent = translations[lang].memo;
-    btns[1].textContent = translations[lang].camera;
-    btns[2].textContent = translations[lang].calendar;
-    btns[3].textContent = translations[lang].github;
-  }
-
-  document.getElementById('lang-select').addEventListener('change', function(e) {
-    setLanguage(e.target.value);
-    localStorage.setItem('vtools-lang', e.target.value);
-  });
-
-  // 초기 언어 설정 (localStorage 우선)
-  const savedLang = localStorage.getItem('vtools-lang') || 'en';
-  document.getElementById('lang-select').value = savedLang;
-  setLanguage(savedLang);
-</script>
+  <script src="scripts/app.js"></script>
 </body>
 </html>
