@@ -1,8 +1,7 @@
 const CACHE_NAME = 'vtools-cache-v1';
 const urlsToCache = [
-  '/',
   '/index.html',
-  '/styles.css',
+  '/styles/main.css',
   '/scripts/app.js',
   '/icons/icon-192.jpg',
   '/icons/icon-512.jpg'
