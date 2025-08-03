@@ -3,8 +3,8 @@ const urlsToCache = [
   '/index.html',
   '/styles/main.css',
   '/scripts/app.js',
-  '/icons/icon-192.jpg',
-  '/icons/icon-512.jpg'
+  '/icons/VTools.png',
+  '/icons/VTools512.png',
 ];
 
 // 설치 단계: 캐시 초기화
