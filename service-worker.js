@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vtools-cache-v1';
+const CACHE_NAME = 'vtools-cache-v1.1.0';
 const urlsToCache = [
   '/index.html',
   '/styles/main.css',
@@ -6,6 +6,22 @@ const urlsToCache = [
   '/icons/VTools.png',
   '/icons/VTools512.png',
 ];
+
+self.addEventListener('install', event => {
+  self.skipWaiting(); // 즉시 활성화
+});
+
+self.addEventListener('activate', event => {
+  clients.claim(); // 모든 탭에 적용
+  event.waitUntil(
+    (async () => {
+      const clientsList = await clients.matchAll({ type: 'window' });
+      for (const client of clientsList) {
+        client.postMessage({ type: 'UPDATE_AVAILABLE' });
+      }
+    })()
+  );
+});
 
 // 설치 단계: 캐시 초기화
 self.addEventListener('install', event => {
