@@ -9,6 +9,13 @@ const urlsToCache = [
 
 self.addEventListener('install', event => {
   self.skipWaiting(); // 즉시 활성화
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.addAll(urlsToCache);
+    }).catch(err => {
+      console.error('❌ 캐시 실패:', err);
+    })
+  );
 });
 
 self.addEventListener('activate', event => {
@@ -20,13 +27,6 @@ self.addEventListener('activate', event => {
         client.postMessage({ type: 'UPDATE_AVAILABLE' });
       }
     })()
-  );
-});
-
-// 설치 단계: 캐시 초기화
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
   );
 });
 
