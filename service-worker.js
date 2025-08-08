@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vtools-cache-v1.1.0';
+const CACHE_NAME = 'vtools-cache-v1.1.1'; // 캐시 이름 업데이트
 const urlsToCache = [
   '/index.html',
   '/styles/main.css',
